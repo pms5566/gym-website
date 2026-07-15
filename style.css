@@ -1396,11 +1396,29 @@ ul   { list-style: none; }
 
   /* ===== CLASSES ===== */
   .classes-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    margin: 0 -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    grid-template-columns: none !important;
   }
-  .cc { height: 260px; }
-  .cc-featured { height: 300px; }
+  .classes-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .cc {
+    flex: 0 0 280px !important;
+    scroll-snap-align: start !important;
+    height: 320px !important;
+  }
+  .cc-featured {
+    height: 320px !important;
+  }
 
   /* ===== STATS BAND ===== */
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1425,8 +1443,24 @@ ul   { list-style: none; }
 
   /* ===== TRAINERS ===== */
   .trainers-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    margin: 0 -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    grid-template-columns: none !important;
+  }
+  .trainers-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .tc {
+    flex: 0 0 280px !important;
+    scroll-snap-align: start !important;
   }
   .tc-img { height: 280px; }
   .tc-body { padding: 16px 20px; }
@@ -1461,11 +1495,32 @@ ul   { list-style: none; }
 
   /* ===== GALLERY ===== */
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 200px;
-    gap: 12px;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    margin: 0 -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    grid-template-columns: none !important;
+    grid-auto-rows: auto !important;
   }
-  .gallery-item.tall { grid-row: span 1; }
+  .gallery-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .gallery-item {
+    flex: 0 0 280px !important;
+    scroll-snap-align: start !important;
+    height: 260px !important;
+  }
+  .gallery-item img {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .gallery-item.tall { grid-row: span 1 !important; }
   .gi-overlay { opacity: 1; }
   .gi-content { transform: translateY(0); }
   .gi-title { font-size: 14px; }
@@ -1473,13 +1528,29 @@ ul   { list-style: none; }
 
   /* ===== PRICING ===== */
   .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 480px;
-    margin: 0 auto;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding-bottom: 16px !important;
+    margin: 0 -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    grid-template-columns: none !important;
+    max-width: 100% !important;
   }
-  .pc { padding: 32px 24px; }
-  .pc-pop { transform: scale(1); }
+  .pricing-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .pc {
+    flex: 0 0 280px !important;
+    scroll-snap-align: start !important;
+    padding: 32px 24px !important;
+    transform: none !important;
+  }
+  .pc-pop { transform: scale(1) !important; }
   .pc-amt { font-size: 52px; }
   .pc-name { font-size: 18px; }
 
@@ -1538,13 +1609,6 @@ ul   { list-style: none; }
 
 /* ===== TABLET (481px – 768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
-  .classes-grid   { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .cc             { height: 280px; }
-  .cc-featured    { grid-column: span 2; height: 300px; }
-  .trainers-grid  { grid-template-columns: 1fr 1fr; gap: 20px; }
-  .gallery-grid   { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; gap: 14px; }
-  .gallery-item.tall { grid-row: span 2; }
-  .pricing-grid   { grid-template-columns: 1fr 1fr; gap: 20px; max-width: 100%; }
   .pc-pop         { transform: scale(1.02); }
   .stats-grid     { grid-template-columns: repeat(4, 1fr); }
   .sched-tab      { flex: 1 1 auto; }
@@ -1559,39 +1623,46 @@ ul   { list-style: none; }
   .pc-amt { font-size: 48px; }
   .cta-title { font-size: 34px; }
   .container { padding: 0 16px; }
-  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
   .gallery-item.tall { grid-row: span 1; }
-  .pricing-grid { max-width: 100%; }
   .sched-tab { flex: 1 1 calc(33% - 8px); }
 
   /* Touch-swipe carousels for mobile */
   .classes-grid,
-  .trainers-grid {
+  .trainers-grid,
+  .gallery-grid,
+  .pricing-grid {
     display: flex !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     -webkit-overflow-scrolling: touch !important;
-    gap: 16px !important;
+    gap: 12px !important;
     padding-bottom: 16px !important;
     margin: 0 -16px !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
     grid-template-columns: none !important;
+    grid-auto-rows: auto !important;
+    max-width: none !important;
   }
   .classes-grid::-webkit-scrollbar,
-  .trainers-grid::-webkit-scrollbar {
+  .trainers-grid::-webkit-scrollbar,
+  .gallery-grid::-webkit-scrollbar,
+  .pricing-grid::-webkit-scrollbar {
     display: none !important;
   }
   .cc,
-  .tc {
-    flex: 0 0 280px !important;
+  .tc,
+  .gallery-item,
+  .pc {
+    flex: 0 0 260px !important;
     scroll-snap-align: start !important;
-    height: 320px !important;
   }
-  .cc-featured {
-    height: 320px !important;
-  }
+  .cc { height: 320px !important; }
+  .cc-featured { height: 320px !important; }
+  .gallery-item { height: 220px !important; width: 260px !important; }
+  .pricing-grid { margin: 0 !important; }
+  .pc { padding: 24px 20px !important; }
 }
 
 /* ===== TOAST NOTIFICATION ===== */
