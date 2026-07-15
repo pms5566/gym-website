@@ -1930,56 +1930,5 @@ ul   { list-style: none; }
   pointer-events: auto;
 }
 
-/* ===== FLOATING WHATSAPP BUTTON ===== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  background: #25D366;
-  color: #FFFFFF;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-  z-index: 999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.whatsapp-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-}
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
-}
-.whatsapp-float::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid #25D366;
-  animation: whatsapp-pulse 2s infinite;
-  opacity: 0;
-  z-index: -1;
-}
-@keyframes whatsapp-pulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
 
-@media (max-width: 768px) {
-  .whatsapp-float {
-    bottom: calc(var(--bn-h) + 16px);
-    right: 16px;
-    width: 48px;
-    height: 48px;
-  }
-  .whatsapp-float svg {
-    width: 24px;
-    height: 24px;
-  }
-}
 
