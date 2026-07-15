@@ -332,3 +332,13 @@ function closeProfileDrawer() {
   overlay?.classList.remove('show');
   document.body.style.overflow = '';
 }
+
+/* ===== MOBILE FOOTER ACCORDION ===== */
+document.querySelectorAll('.footer-grid .ft').forEach(header => {
+  header.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      header.classList.toggle('active');
+    }
+  });
+});
+
