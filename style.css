@@ -1536,8 +1536,18 @@ ul   { list-style: none; }
   .scroll-top { bottom: calc(var(--bn-h) + 12px); }
 }
 
-/* ===== TABLET (481px – 768px) ===== */
-@media (min-width: 481px) and (max-width: 768px) {
+/* ===== TABLET (641px – 768px) ===== */
+@media (min-width: 641px) and (max-width: 768px) {
+  .classes-grid   { display: grid !important; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cc             { flex: unset !important; height: 280px !important; }
+  .cc-featured    { grid-column: span 2; height: 300px !important; }
+  .trainers-grid  { display: grid !important; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .tc             { flex: unset !important; }
+  .gallery-grid   { display: grid !important; grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; gap: 14px; }
+  .gallery-item   { flex: unset !important; height: unset !important; }
+  .gallery-item.tall { grid-row: span 2; }
+  .pricing-grid   { display: grid !important; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 100% !important; width: auto !important; margin: 0 !important; }
+  .pc             { flex: unset !important; transform: none; }
   .pc-pop         { transform: scale(1.02); }
   .stats-grid     { grid-template-columns: repeat(4, 1fr); }
   .sched-tab      { flex: 1 1 auto; }
@@ -1546,52 +1556,127 @@ ul   { list-style: none; }
   .about-right    { order: 2; }
 }
 
-@media (max-width: 480px) {
-  .hero-title { font-size: 52px; }
-  .si-num { font-size: 44px; }
-  .pc-amt { font-size: 48px; }
-  .cta-title { font-size: 34px; }
-  .container { padding: 0 16px; }
+@media (max-width: 640px) {
+  /* ── Typography adjustments ─────────────────────── */
+  .hero-title  { font-size: 42px; }
+  .si-num      { font-size: 40px; }
+  .pc-amt      { font-size: 44px; }
+  .cta-title   { font-size: 30px; }
+  .sec-title   { font-size: 32px; }
+  .container   { padding: 0 16px; }
   .gallery-item.tall { grid-row: span 1; }
-  .sched-tab { flex: 1 1 calc(33% - 8px); }
+  .sched-tab   { flex: 1 1 calc(33% - 8px); }
 
-  /* Touch-swipe carousels for mobile */
+  /* ── Parent section: allow horizontal bleed for carousels ─ */
+  #classes .container,
+  #trainers .container,
+  #gallery .container,
+  #pricing .container {
+    overflow: visible !important;
+  }
+
+  /* ── SHARED CAROUSEL WRAPPER ─────────────────────── */
   .classes-grid,
   .trainers-grid,
   .gallery-grid,
   .pricing-grid {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    overflow-y: visible !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     -webkit-overflow-scrolling: touch !important;
-    gap: 12px !important;
-    padding-bottom: 16px !important;
+    gap: 14px !important;
+    padding: 8px 16px 24px !important;
     margin: 0 -16px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    grid-template-columns: none !important;
-    grid-auto-rows: auto !important;
-    max-width: none !important;
+    width: calc(100% + 32px) !important;
+    max-width: unset !important;
+    grid-template-columns: unset !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
   }
+
+  /* Hide scrollbar on all carousels */
   .classes-grid::-webkit-scrollbar,
   .trainers-grid::-webkit-scrollbar,
   .gallery-grid::-webkit-scrollbar,
   .pricing-grid::-webkit-scrollbar {
     display: none !important;
   }
-  .cc,
-  .tc,
-  .gallery-item,
-  .pc {
-    flex: 0 0 260px !important;
+
+  /* ── CLASSES CAROUSEL ────────────────────────────── */
+  .cc {
+    flex: 0 0 78vw !important;
+    width: 78vw !important;
+    max-width: 280px !important;
+    height: 300px !important;
+    min-height: unset !important;
     scroll-snap-align: start !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
   }
-  .cc { height: 320px !important; }
-  .cc-featured { height: 320px !important; }
-  .gallery-item { height: 220px !important; width: 260px !important; }
-  .pricing-grid { margin: 0 !important; }
-  .pc { padding: 24px 20px !important; }
+  .cc-featured {
+    flex: 0 0 85vw !important;
+    width: 85vw !important;
+    max-width: 310px !important;
+    height: 300px !important;
+  }
+  .cc-bg   { height: 100% !important; }
+  .cc-overlay { border-radius: 0 !important; }
+
+  /* ── TRAINERS CAROUSEL ───────────────────────────── */
+  .tc {
+    flex: 0 0 72vw !important;
+    width: 72vw !important;
+    max-width: 280px !important;
+    min-width: unset !important;
+    scroll-snap-align: start !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+  }
+  .tc-img-wrap { height: 200px !important; }
+  .tc-info     { padding: 16px !important; }
+
+  /* ── GALLERY (FACILITY) CAROUSEL ─────────────────── */
+  .gallery-item {
+    flex: 0 0 80vw !important;
+    width: 80vw !important;
+    max-width: 300px !important;
+    height: 240px !important;
+    min-height: unset !important;
+    scroll-snap-align: start !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+  .gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* ── PRICING CAROUSEL ────────────────────────────── */
+  .pricing-grid {
+    align-items: flex-start !important;
+    padding-bottom: 28px !important;
+  }
+  .pc {
+    flex: 0 0 82vw !important;
+    width: 82vw !important;
+    max-width: 300px !important;
+    scroll-snap-align: start !important;
+    padding: 24px 20px !important;
+    transform: none !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3) !important;
+  }
+  .pc-pop {
+    transform: none !important;
+    border-width: 2px !important;
+  }
+  .pc-amt { font-size: 44px !important; }
 }
 
 /* ===== TOAST NOTIFICATION ===== */
