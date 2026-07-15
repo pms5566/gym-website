@@ -26,7 +26,7 @@
   --r-xl:      28px;
   --tr:        all .3s cubic-bezier(.4,0,.2,1);
   --nav-h:     116px;
-  --bn-h:      66px;
+  --bn-h:      76px;
   --font-d:    'Bebas Neue', sans-serif;
   --font-b:    'Inter', sans-serif;
 }
@@ -1221,12 +1221,13 @@ ul   { list-style: none; }
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 990;
-  background: rgba(17,17,17,.96);
+  background: rgba(17,17,17,.97);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-top: 1px solid var(--border);
-  padding: 6px 10px;
-  padding-bottom: calc(6px + env(safe-area-inset-bottom));
+  padding: 8px 10px 0;
+  /* Pushes content above system nav bar on both Android & iOS */
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
 }
 .bottom-nav > * {
   display: flex;
